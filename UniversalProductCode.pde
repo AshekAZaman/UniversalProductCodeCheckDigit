@@ -41,7 +41,7 @@ void programInterface() {
 void resetUserInput() {
     
     /*
-    * OBJECTIVE resetUserInput()
+    * OBJECTIVE resetUserInput() nice
     * Resets the variable userInput for further use
     *
     */

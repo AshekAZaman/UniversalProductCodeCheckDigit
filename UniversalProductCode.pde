@@ -31,7 +31,6 @@ void programInterface() {
     * option chosen. 
     *
     * It will keep prompting the user for a new choice and number until the user enters “quit”.
-    *
     */
     
     

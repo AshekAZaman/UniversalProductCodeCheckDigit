@@ -34,6 +34,23 @@ void programInterface() {
     */
     
     
+    boolean endProgram = false;
+    
+    while(endProgram == false) {
+        resetUserInput();
+        userInput = JOptionPane.showInputDialog("Please type from the follwing options:\n• create - to make UPC-A code\n• verify - to verify UPC-A code \n• quit - to end the program\n");
+        if (userInput.toUpperCase().contains("CREATE")) {
+            calculateCheckDigit();
+        } else if (userInput.toUpperCase().contains("VERIFY")) {
+            
+        } else if (userInput.toUpperCase().contains("QUIT")) {
+            printMessage += "Programmed by: " + AUTHOR + "\n" + "" + hour() + ":" + minute() + ":" + second() + "    " + day() + "/" + month() + "/" + year() + "\n";
+            endProgram = true;
+        } //else if      
+    } //while
+    
+    printMessage();
+    
     
 } //programInterface
 
@@ -42,7 +59,7 @@ void resetUserInput() {
     
     /*
     * OBJECTIVE resetUserInput() nice
-    * Resets the variable userInput for further use
+    * Resetsthe variable userInput for further use
     *
     */
     
@@ -74,7 +91,7 @@ void calculateCheckDigit() {
         sumOddPostions += Integer.parseInt("" + userInput.charAt(i));    
     } //for
     
-    //  Step : 2 Separately sum all digits in even - numbered positions(second, fourth, …, tenth).
+    //  Step : 2Separately sum all digits in even - numbered positions(second, fourth, …, tenth).
     
     int sumEvenPostions = 0;
     
@@ -86,12 +103,12 @@ void calculateCheckDigit() {
     
     int processResult = (sumOddPostions * 3) + sumEvenPostions;
     
-    //  Step : 4 Calculate the result(from Step 3) modulo 10.
+    //  Step : 4Calculate the result(from Step 3) modulo 10.
     
     int finalResult = processResult % 10;
     
     // Step : 5 Ifthe result(from Step 4) is zero then the check digit is 0, otherwise the check digit is 10
-    // minus the result.
+    // minus theresult.
     
     int checkDigit = 0;
     
@@ -104,9 +121,8 @@ void calculateCheckDigit() {
     printMessage += "The12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";  
     
     
-    printMessage();
     
-} //calculateCheckDigit
+} // calculateCheckDigit
 
 void printMessage() {
     
@@ -116,12 +132,12 @@ void printMessage() {
     *
     */
     
-    printMessage += "Programmed by: " + AUTHOR + "\n" + "" + hour() + ":" + minute() + ":" + second() + "    " + day() + "/" + month() + "/" + year() + "\n";
     
     fill(50);
     textSize(15);
     textAlign(LEFT);
     text(printMessage, 0, height / 8);
+    
     
 }
 
@@ -134,7 +150,7 @@ void setup() {
     */
     
     size(500,500);
-    calculateCheckDigit();  
+    programInterface();
     
 } //setup
 

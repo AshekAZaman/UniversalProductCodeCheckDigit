@@ -16,6 +16,38 @@ final String AUTHOR = "Kathryn Marcynuk"; // Write your name here.
 String userInput = "";
 String printMessage = "";
 
+void programInterface() {
+    
+    /*
+    *
+    * OBJECTIVE programInterface()
+    * This function sets up the interface and asks the user
+    * to make suitable choices.
+    * The user will pick from a menu with the following three options:
+    *    • Create UPC-A code
+    *    • Verify UPC-A code
+    *    • Quit
+    * The program will then prompt the user for a 11-digit or 12-digit number, depending on the above
+    * option chosen. 
+    *
+    * It will keep prompting the user for a new choice and number until the user enters “quit”.
+    */
+    
+    
+    
+} //programInterface
+
+
+void resetUserInput() {
+    
+    /*
+    * OBJECTIVE resetUserInput()
+    * Resets the variable userInput for further use
+    *
+    */
+    
+    userInput = "";
+} //resetUserInput
 
 void calculateCheckDigit() {
     
@@ -25,6 +57,8 @@ void calculateCheckDigit() {
     * digits at once, it does not have a separate dialog box for each digit.
     *
     */
+    
+    resetUserInput();
     
     userInput = JOptionPane.showInputDialog("Please enter the first 11 digits of a UPC-A code");
     

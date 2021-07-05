@@ -19,7 +19,6 @@ String printMessage = ""; //Prints the message in the canvas
 void programInterface() {
     
     /*
-    * This is a changeSSS
     * OBJECTIVE programInterface()
     * This function sets up the interface and asks the user
     * to make suitable choices.

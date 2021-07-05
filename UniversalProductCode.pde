@@ -42,7 +42,7 @@ void programInterface() {
         if (userInput.toUpperCase().contains("CREATE")) {
             calculateCheckDigit();
         } else if (userInput.toUpperCase().contains("VERIFY")) {
-            
+            verifyCode();            
         } else if (userInput.toUpperCase().contains("QUIT")) {
             printMessage += "Programmed by: " + AUTHOR + "\n" + "" + hour() + ":" + minute() + ":" + second() + "    " + day() + "/" + month() + "/" + year() + "\n";
             endProgram = true;
@@ -54,6 +54,69 @@ void programInterface() {
     
 } //programInterface
 
+void verifyCode() {
+    
+    /*
+    * OBJECTIVE verifyCode()
+    * This function uses JOptionPane to prompt the user to enter a twele digit number. The user input all 11
+    * digits at once, it does not have a separate dialog box for each digit. It then checks if the
+    * number is a valid 12-digit UPC-A code
+    *
+    */
+    
+    resetUserInput();
+    
+    userInput = JOptionPane.showInputDialog("Please enter the 12 digits of a UPC-A code");
+    
+    printMessage += "You have entered " + userInput + " to verify\n";
+    
+    //  Step:1 Sum all digits in odd-numbered positions (first, third, fifth,.. , eleventh).
+    
+    int sumOddPostions = 0;
+    
+    for (int i = 0; i < userInput.length() - 1; i += 2) {
+        sumOddPostions += Integer.parseInt("" + userInput.charAt(i));    
+    } //for
+    
+    //  Step : 2 Separately sum all digits in even - numbered positions(second, fourth, …, tenth).
+    
+    int sumEvenPostions = 0;
+    
+    for (int i = 1; i < userInput.length() - 1; i += 2) {
+        sumEvenPostions += Integer.parseInt("" + userInput.charAt(i));
+    } //for
+    
+    // Step : 3 Multiply the sum from Step 1 by 3, and add the result to the sum in Step 2.
+    
+    int processResult = (sumOddPostions * 3) + sumEvenPostions;
+    
+    //  Step : 4Calculate the result(from Step 3) modulo 10.
+    
+    int finalResult = processResult % 10;
+    
+    if (finalResult == Integer.parseInt("" + userInput.charAt(userInput.length() - 1))) {
+        printMessage += "The 12-digit UPC-A code you entered is valid.\n";
+    } else{
+        printMessage += "The 12-digit UPC-A code you entered is invalid.\n";
+        int checkDigit = 0;
+        
+        if (finalResult == 0) {    
+            checkDigit = 0;
+        } else{
+            checkDigit = 10 - finalResult;
+        }
+        
+        printMessage += "The valid 12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";  
+        
+        
+    }
+    
+    
+    
+    
+    
+} //verifyCode
+
 
 void resetUserInput() {
     
@@ -63,7 +126,7 @@ void resetUserInput() {
     *
     */
     
-    userInput = "";// It is now reseet
+    userInput = "";
     
 } //resetUserInput
 
@@ -72,7 +135,7 @@ void calculateCheckDigit() {
     /*
     * OBJECTIVE calculateCheckDigit()
     * This function uses JOptionPane to prompt the user to enter a eleven digit number. The user input all 11
-    * digits at once, it does not have a separate dialog box for each digit.
+    * digits at once, it does not have a separate dialog box for each digit. It makes a 12-digit UPC-A code
     *
     */
     
@@ -81,7 +144,7 @@ void calculateCheckDigit() {
     userInput = JOptionPane.showInputDialog("Please enter the first 11 digits of a UPC-A code");
     
     
-    printMessage += "You have entered " + userInput + "\n";
+    printMessage += "You have entered " + userInput + " to create a 12 digit UPC-A code\n";
     
     //  Step:1 Sum all digits in odd-numbered positions (first, third, fifth,.. , eleventh).
     
@@ -91,7 +154,7 @@ void calculateCheckDigit() {
         sumOddPostions += Integer.parseInt("" + userInput.charAt(i));    
     } //for
     
-    //  Step : 2Separately sum all digits in even - numbered positions(second, fourth, …, tenth).
+    //  Step : 2 Separately sum all digits in even - numbered positions(second, fourth, …, tenth).
     
     int sumEvenPostions = 0;
     
@@ -118,7 +181,7 @@ void calculateCheckDigit() {
         checkDigit = 10 - finalResult;
     }
     
-    printMessage += "The12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";  
+    printMessage += "The 12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";  
     
     
     
@@ -132,14 +195,12 @@ void printMessage() {
     *
     */
     
-    
     fill(50);
     textSize(15);
     textAlign(LEFT);
-    text(printMessage, 0, height / 8);
+    text(printMessage, 0, height / 8);    
     
-    
-}
+} //printMessage()
 
 void setup() {
     

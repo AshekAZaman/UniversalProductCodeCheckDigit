@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /* ------------------------------------------ CONSTANTS ----------------------------------------- */
 
-final String AUTHOR = "Kathryn Marcynuk"; // Write your name here.
+final String AUTHOR = "Ashek A Zaman"; // Write your name here.
 
 /* ------------------------------------------ VARIABLES ----------------------------------------- */
 String userInput = ""; //Used for taking input from user

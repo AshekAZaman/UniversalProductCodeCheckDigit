@@ -1,4 +1,4 @@
-# UniversalProductCode
+# UniversalProductCodeCheckDigit
 
 The Universal Product Code (UPC) is used to track unique products in stores and is used in
 many countries around the word. You have likely seen UPCs represented as barcodes.
@@ -16,6 +16,6 @@ For example, if the UPC-A code is 024543167150, then:
 = 0
 Therefore, this UPC-A code is valid.
 
-Use this program to check if your UPC-A code is valid, to create a new UPC-A code.
+Use this program to check if your 12 digit UPC-A code is valid, to create a new UPC-A code by making 11 digit UPC-A code.
 
 To run the programming you need to have processing installed in your computer. Run UniversalProductCode.pde in your computer. 

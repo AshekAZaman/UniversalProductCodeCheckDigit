@@ -31,8 +31,7 @@ void programInterface() {
     * option chosen. 
     *
     * It will keep prompting the user for a new choice and number until the user enters “quit”.
-    */
-    
+    */    
     
     boolean endProgram = false;
     
@@ -90,7 +89,7 @@ void verifyCode() {
     
     int processResult = (sumOddPostions * 3) + sumEvenPostions;
     
-    //  Step : 4Calculate the result(from Step 3) modulo 10.
+    //  Step : 4 Calculate the result(from Step 3) modulo 10.
     
     int finalResult = processResult % 10;
     
@@ -104,16 +103,11 @@ void verifyCode() {
             checkDigit = 0;
         } else{
             checkDigit = 10 - finalResult;
-        }
+        } //else
         
         printMessage += "The valid 12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";  
         
-        
-    }
-    
-    
-    
-    
+    } //else    
     
 } //verifyCode
 
@@ -141,8 +135,7 @@ void calculateCheckDigit() {
     
     resetUserInput();
     
-    userInput = JOptionPane.showInputDialog("Please enter the first 11 digits of a UPC-A code");
-    
+    userInput = JOptionPane.showInputDialog("Please enter the first 11 digits of a UPC-A code");    
     
     printMessage += "You have entered " + userInput + " to create a 12 digit UPC-A code\n";
     
@@ -181,9 +174,7 @@ void calculateCheckDigit() {
         checkDigit = 10 - finalResult;
     }
     
-    printMessage += "The 12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";  
-    
-    
+    printMessage += "The 12-digit UPC-A code is: " + userInput + "" + checkDigit + "\n";    
     
 } // calculateCheckDigit
 
@@ -214,7 +205,6 @@ void setup() {
     programInterface();
     
 } //setup
-
 
 void draw() {
     
